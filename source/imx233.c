@@ -74,7 +74,7 @@ int *gpio_mmap = 0;
 
 int *gpio_map() {
 	int fd;
-    
+    	
 	if (gpio_mmap != 0)
         return;
         
@@ -195,9 +195,14 @@ static struct PyModuleDef module_def = {
     NULL,
 };
 #endif
-PyMODINIT_FUNC PyInit_iMX233_GPIO(void) {
-    PyObject* module = NULL;
 
+#if PY_MAJOR_VERSION >= 3
+PyMODINIT_FUNC PyInit_iMX233_GPIO(void) {
+#else
+	PyMODINIT_FUNC initiMX233_GPIO(void) {
+#endif
+
+    PyObject* module = NULL;
 
 #if PY_MAJOR_VERSION >= 3
     module = PyModule_Create(&module_def);
