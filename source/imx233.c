@@ -47,6 +47,8 @@ struct _gpio {
     };
     
 struct _gpio pins[] = {
+    {1, 6, "PIN7"},
+    {1, 7, "PIN8"},
     {0, 0, "PIN9"},
     {0, 1, "PIN10"},
     {0, 2, "PIN11"},
@@ -218,24 +220,27 @@ PyMODINIT_FUNC PyInit_iMX233_GPIO(void) {
     InputException = PyErr_NewException("pyiMX233.InputException", NULL, NULL);
     PyModule_AddObject(module, "InputException", InputException);
 
-   
-    PyModule_AddObject(module, "PIN9", Py_BuildValue("i", 0));
-    PyModule_AddObject(module, "PIN10", Py_BuildValue("i", 1));
-    PyModule_AddObject(module, "PIN11", Py_BuildValue("i", 2));
-    PyModule_AddObject(module, "PIN12", Py_BuildValue("i", 3));
-    PyModule_AddObject(module, "PIN13", Py_BuildValue("i", 4));
-    PyModule_AddObject(module, "PIN14", Py_BuildValue("i", 5));
-    PyModule_AddObject(module, "PIN15", Py_BuildValue("i", 6));
-    PyModule_AddObject(module, "PIN16", Py_BuildValue("i", 7));
-    PyModule_AddObject(module, "PIN17", Py_BuildValue("i", 8));
-    PyModule_AddObject(module, "PIN18", Py_BuildValue("i", 9));
-    PyModule_AddObject(module, "PIN24", Py_BuildValue("i", 10));
-    PyModule_AddObject(module, "PIN25", Py_BuildValue("i", 11));
-    PyModule_AddObject(module, "PIN26", Py_BuildValue("i", 12));
-    PyModule_AddObject(module, "PIN27", Py_BuildValue("i", 13));
-    PyModule_AddObject(module, "PIN28", Py_BuildValue("i", 14));
-    PyModule_AddObject(module, "PIN29", Py_BuildValue("i", 15));
-    PyModule_AddObject(module, "PIN31", Py_BuildValue("i", 16));
+    
+    PyModule_AddObject(module, "PIN7", Py_BuildValue("i", 0));
+    PyModule_AddObject(module, "PIN8", Py_BuildValue("i", 1));
+    PyModule_AddObject(module, "PIN9", Py_BuildValue("i", 2));
+    PyModule_AddObject(module, "PIN10", Py_BuildValue("i", 3));
+    PyModule_AddObject(module, "PIN11", Py_BuildValue("i", 4));
+    PyModule_AddObject(module, "PIN12", Py_BuildValue("i", 5));
+    PyModule_AddObject(module, "PIN13", Py_BuildValue("i", 6));
+    PyModule_AddObject(module, "PIN14", Py_BuildValue("i", 7));
+    PyModule_AddObject(module, "PIN15", Py_BuildValue("i", 8));
+    PyModule_AddObject(module, "PIN16", Py_BuildValue("i", 9));
+    PyModule_AddObject(module, "PIN17", Py_BuildValue("i", 10));
+    PyModule_AddObject(module, "PIN18", Py_BuildValue("i", 11));
+    PyModule_AddObject(module, "PIN23", Py_BuildValue("i", 12));
+    PyModule_AddObject(module, "PIN24", Py_BuildValue("i", 13));
+    PyModule_AddObject(module, "PIN25", Py_BuildValue("i", 14));
+    PyModule_AddObject(module, "PIN26", Py_BuildValue("i", 15));
+    PyModule_AddObject(module, "PIN27", Py_BuildValue("i", 16));
+    PyModule_AddObject(module, "PIN28", Py_BuildValue("i", 17));
+    PyModule_AddObject(module, "PIN29", Py_BuildValue("i", 18));
+    PyModule_AddObject(module, "PIN31", Py_BuildValue("i", 19));
 #if PY_MAJOR_VERSION >= 3
     return module;
 #else
