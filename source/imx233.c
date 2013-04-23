@@ -172,7 +172,7 @@ static PyObject* py_init(PyObject* self, PyObject* args) {
 }
 
 
-PyMethodDef module_methods[] = {
+static PyMethodDef module_methods[] = {
     {"init", py_init, METH_NOARGS, "Initialize module"},
     {"setinput", py_setinput, METH_VARARGS, "Set input directions."},
     {"setoutput", py_setoutput, METH_VARARGS, "Set output directions."},
@@ -183,18 +183,22 @@ PyMethodDef module_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 static struct PyModuleDef module_def = {
     PyModuleDef_HEAD_INIT,
-    "iMX233 module",
+    "_iMX233_GPIO",
     NULL,
     -1,
-    module_methods
+    module_methods,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
 };
 #endif
-PyMODINIT_FUNC initiMX233_GPIO(void) {
+PyMODINIT_FUNC PyInit_iMX233_GPIO(void) {
     PyObject* module = NULL;
 
 
 #if PY_MAJOR_VERSION >= 3
-    module = PyModule_Create(&module_methods);
+    module = PyModule_Create(&module_def);
 #else
     module = Py_InitModule("iMX233_GPIO", module_methods);
 #endif
@@ -232,5 +236,9 @@ PyMODINIT_FUNC initiMX233_GPIO(void) {
     PyModule_AddObject(module, "PIN28", Py_BuildValue("i", 14));
     PyModule_AddObject(module, "PIN29", Py_BuildValue("i", 15));
     PyModule_AddObject(module, "PIN31", Py_BuildValue("i", 16));
-
+#if PY_MAJOR_VERSION >= 3
+    return module;
+#else
+    return;
+#endif
 }
